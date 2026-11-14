@@ -64,6 +64,15 @@ wp backup-guard restore <nom> [--files-only] [--db-only] [--yes]
 
 Dans WordPress : Extensions, Ajouter, Téléverser une extension, puis choisir `backup-guard.zip` et l'activer. Le zip se télécharge dans les [releases](../../releases) ou se construit avec `npm run build` (il est alors dans `dist/`).
 
+## Mises à jour par le Karom Hub
+
+Le plugin peut recevoir ses mises à jour du [Karom Hub](https://hub.karom.studio), comme n'importe quelle extension (écran Extensions, mises à jour automatiques comprises). Ça passe par le fichier `includes/class-karom-hub-client.php`, le client du hub, et par l'en-tête `Update URI: https://hub.karom.studio` de `backup-guard.php`.
+
+- Le client ajoute un écran **Réglages, Licence Backup Guard** (clé, état, sites utilisés). **Il ne coupe jamais une fonction** : le plugin reste sans licence et sans fonction réservée, la clé ne sert qu'à recevoir les mises à jour du hub.
+- Le client ne fait rien tant qu'aucune clé n'est saisie, et un client qui ne démarre pas n'empêche pas le plugin de fonctionner.
+- Sur le hub, le produit doit s'appeler `backup-guard` (le dossier du zip), avec `backup-guard/backup-guard.php` comme fichier principal. Il peut être lié à ce dépôt : chaque release GitHub publiée avec `backup-guard.zip` devient une version du hub.
+- `includes/class-karom-hub-client.php` est le fichier du hub (`clients/php/class-karom-hub-client.php`), copié tel quel : pour le mettre à jour, on le recopie, on ne le modifie pas ici.
+
 ## Développement
 
 ### Dépendances
@@ -168,6 +177,7 @@ On ne pousse pas sur `main` : on crée une branche, on ouvre une pull request, e
 backup-guard.php     point d'entrée du plugin
 includes/              le plugin (tâches, archive tar.gz, destinations, notifications, admin, WP-CLI)
 includes/storage/      un fichier par type d'emplacement
+includes/class-karom-hub-client.php   le client du Karom Hub (mises à jour), copié du hub
 runner/                programme de restauration, indépendant de WordPress
 assets/                CSS et JS de l'administration
 vendor/                bibliothèques embarquées (Composer)

@@ -10,7 +10,7 @@
  * Author URI: https://karom.studio
  * License: LGPL v2.1
  * License URI: http://www.gnu.org/licenses/lgpl-2.1.html
- * Update URI: https://karom.studio/wp/plugin/backup-guard
+ * Update URI: https://hub.karom.studio
  * Text Domain: backup-guard
  * Domain Path: /languages
  */
@@ -117,6 +117,15 @@ add_action('wp_ajax_backup_guard_slice', array('Backup_Guard_Job', 'ajax_slice')
 add_action('wp_ajax_nopriv_backup_guard_slice', array('Backup_Guard_Job', 'ajax_slice'));
 
 Backup_Guard_Updates::init();
+
+// Updates and the licence screen come from the Karom Hub, through the hub's own client file (copied as is).
+// The client never switches a feature off, and a client that cannot start must never take the backups down with it.
+require_once BACKUP_GUARD_DIR . '/includes/class-karom-hub-client.php';
+try {
+	karom_hub_client();
+} catch (Throwable $e) {
+	backup_guard_debug(sprintf('Karom Hub : %s', $e->getMessage()));
+}
 
 if (is_admin()) {
 	require_once BACKUP_GUARD_DIR . '/includes/class-admin.php';
