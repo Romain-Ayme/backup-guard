@@ -6,6 +6,12 @@
 require __DIR__ . '/vendor/autoload.php';
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+// The version the plugin declares in its header, for the tests that compare against it.
+if (!defined('BACKUP_GUARD_TEST_VERSION')) {
+	preg_match('/^ \* Version:\s*(\S+)/m', (string) file_get_contents(dirname(__DIR__) . '/backup-guard.php'), $backup_guard_version);
+	define('BACKUP_GUARD_TEST_VERSION', $backup_guard_version[1]);
+}
+
 if (!defined('ABSPATH')) {
 	define('ABSPATH', dirname(__DIR__) . '/');
 }

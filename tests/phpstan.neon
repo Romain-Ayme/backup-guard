@@ -7,6 +7,10 @@ parameters:
 		- ../includes
 		- ../backup-guard.php
 		- ../uninstall.php
+	# The Karom Hub client is the hub's own file, copied as is and checked by the hub's tests: it is not analysed here.
+	excludePaths:
+		analyse:
+			- ../includes/class-karom-hub-client.php
 	scanFiles:
 		- ../backup-guard.php
 	scanDirectories:
