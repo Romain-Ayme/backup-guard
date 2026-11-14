@@ -174,7 +174,7 @@ if (!class_exists('Karom_Hub_Client')) {
             add_filter('upgrader_pre_download', [$this, 'download_package'], 10, 4);
 
             add_action('init', [$this, 'schedule']);
-            add_action($this->cron_hook(), [$this, 'refresh_status']);
+            add_action($this->cron_hook(), [$this, 'run_scheduled_refresh']);
             add_action('admin_init', [$this, 'maybe_refresh']);
             add_action('admin_menu', [$this, 'register_menu']);
             add_action('admin_notices', [$this, 'render_notice']);
@@ -277,6 +277,11 @@ if (!class_exists('Karom_Hub_Client')) {
         }
 
         // --------------------------------------------------------- status refresh
+
+        /** The cron hook callback: an action returns nothing, so it discards the refreshed status. */
+        public function run_scheduled_refresh(): void {
+            $this->refresh_status();
+        }
 
         /** Asks the hub for the status and the current offer, keeping the last known state on any failure. */
         public function refresh_status(): array {

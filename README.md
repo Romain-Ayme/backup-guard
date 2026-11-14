@@ -71,7 +71,7 @@ Le plugin peut recevoir ses mises à jour du [Karom Hub](https://hub.karom.studi
 - Le client ajoute un écran **Réglages, Licence Backup Guard** (clé, état, sites utilisés). **Il ne coupe jamais une fonction** : le plugin reste sans licence et sans fonction réservée, la clé ne sert qu'à recevoir les mises à jour du hub.
 - Le client ne fait rien tant qu'aucune clé n'est saisie, et un client qui ne démarre pas n'empêche pas le plugin de fonctionner.
 - Sur le hub, le produit doit s'appeler `backup-guard` (le dossier du zip), avec `backup-guard/backup-guard.php` comme fichier principal. Il peut être lié à ce dépôt : chaque release GitHub publiée avec `backup-guard.zip` devient une version du hub.
-- `includes/class-karom-hub-client.php` est le fichier du hub (`clients/php/class-karom-hub-client.php`), copié tel quel : pour le mettre à jour, on le recopie, on ne le modifie pas ici. L'analyse statique l'ignore pour cette raison.
+- `includes/class-karom-hub-client.php` est le fichier du hub (`clients/php/class-karom-hub-client.php`), copié tel quel : pour le mettre à jour, on le recopie, on ne le modifie pas ici.
 
 ## Développement
 
