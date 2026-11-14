@@ -46,8 +46,10 @@ jobs:
         uses: actions/cache@v6
         with:
           path: tests/.phpstan.cache
-          key: phpstan-${{ matrix.php }}-${{ github.sha }}
-          restore-keys: phpstan-${{ matrix.php }}-
+          # Tied to the lock file: PHPStan's cache remembers where its own files are (the path of the checkout),
+          # so a cache from another installation of the tools must never be restored.
+          key: phpstan-${{ matrix.php }}-${{ hashFiles('tests/composer.lock') }}-${{ github.sha }}
+          restore-keys: phpstan-${{ matrix.php }}-${{ hashFiles('tests/composer.lock') }}-
 
       - name: Dépendances de développement
         run: composer install --working-dir=tests --no-interaction --prefer-dist --no-progress
