@@ -1,6 +1,6 @@
 === Backup Guard ===
 Requires at least: 7.1
-Requires PHP: 8.3
+Requires PHP: 8.4
 Stable tag: 1.0.0
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html

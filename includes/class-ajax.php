@@ -301,7 +301,7 @@ class Backup_Guard_Ajax {
 		$add = function ($label, $ok, $detail) use (&$checks) {
 			$checks[] = array('label' => $label, 'ok' => (bool) $ok, 'detail' => $detail);
 		};
-		$add(__('Version de PHP', 'backup-guard'), version_compare(PHP_VERSION, '8.3', '>='), PHP_VERSION);
+		$add(__('Version de PHP', 'backup-guard'), version_compare(PHP_VERSION, '8.4', '>='), PHP_VERSION);
 		$add(__('Module zlib (compression)', 'backup-guard'), function_exists('inflate_init'), function_exists('inflate_init') ? __('Présent', 'backup-guard') : __('Absent : les sauvegardes sont impossibles', 'backup-guard'));
 		$add(__('Module cURL (WebDAV)', 'backup-guard'), function_exists('curl_init'), function_exists('curl_init') ? __('Présent', 'backup-guard') : __('Absent : l\'envoi WebDAV est impossible', 'backup-guard'));
 		$add(__('Dossier de travail', 'backup-guard'), is_writable(BACKUP_GUARD_ROOT), is_writable(BACKUP_GUARD_ROOT) ? __('Accessible en écriture', 'backup-guard') : sprintf(__('Impossible d\'écrire dans %s', 'backup-guard'), BACKUP_GUARD_ROOT));

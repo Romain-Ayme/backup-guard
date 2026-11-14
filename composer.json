@@ -4,7 +4,7 @@
 	"type": "wordpress-plugin",
 	"license": "LGPL-2.1-only",
 	"require": {
-		"php": ">=8.3",
+		"php": ">=8.4",
 		"phpseclib/phpseclib": "^4.0",
 		"paragonie/constant_time_encoding": "^3.1"
 	},
