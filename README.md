@@ -4,7 +4,7 @@ Par [Karom Studio](https://karom.studio) - Romain AYME.
 
 Plugin WordPress de sauvegarde, restauration, migration et clonage, **sans licence et sans fonction réservée**.
 
-- PHP 8.3 ou plus, WordPress 7.1 ou plus.
+- PHP 8.4 ou plus, WordPress 7.1 ou plus.
 - Licence LGPL v2.1.
 
 ## Fonctionnalités
@@ -91,7 +91,7 @@ Les outils de contrôle sont à part, dans `tests/composer.json`, et ne sont pas
 composer --working-dir=tests install
 composer --working-dir=tests run check     # tout ce qui suit
 composer --working-dir=tests run lint      # syntaxe
-composer --working-dir=tests run compat    # compatibilité PHP 8.3 à 8.5 (PHPCompatibilityWP)
+composer --working-dir=tests run compat    # compatibilité PHP 8.4 à 8.5 (PHPCompatibilityWP)
 composer --working-dir=tests run stan      # analyse statique (PHPStan niveau 3, stubs WordPress)
 composer --working-dir=tests run unit      # tests unitaires (PHPUnit)
 ```
@@ -147,7 +147,7 @@ Les textes du script de l'administration (`assets/admin.js`) passent par `T('tex
 
 | Job | Ce qu'il fait |
 |---|---|
-| Contrôles PHP 8.3 / 8.4 / 8.5 | syntaxe, compatibilité, PHPStan, PHPUnit |
+| Contrôles PHP 8.4 / 8.5 | syntaxe, compatibilité, PHPStan, PHPUnit |
 | Paquet du plugin | construit le zip et le garde comme artefact |
 | Services sur WordPress / PHP | destinations, notifications, sauvegardes et erreurs, dans wp-env avec les services Docker |
 

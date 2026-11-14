@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['8.3', '8.4', '8.5']
+        php: ['8.4', '8.5']
     steps:
       - uses: actions/checkout@v7
 
@@ -46,13 +46,15 @@ jobs:
         uses: actions/cache@v6
         with:
           path: tests/.phpstan.cache
-          key: phpstan-${{ matrix.php }}-${{ github.sha }}
-          restore-keys: phpstan-${{ matrix.php }}-
+          # Tied to the lock file: PHPStan's cache remembers where its own files are (the path of the checkout),
+          # so a cache from another installation of the tools must never be restored.
+          key: phpstan-${{ matrix.php }}-${{ hashFiles('tests/composer.lock') }}-${{ github.sha }}
+          restore-keys: phpstan-${{ matrix.php }}-${{ hashFiles('tests/composer.lock') }}-
 
       - name: Dépendances de développement
         run: composer install --working-dir=tests --no-interaction --prefer-dist --no-progress
 
-      - name: Lint, compatibilité PHP 8.3-8.5, analyse statique et tests unitaires
+      - name: Lint, compatibilité PHP 8.4-8.5, analyse statique et tests unitaires
         run: composer --working-dir=tests run check
 
   package:

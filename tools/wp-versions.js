@@ -1,6 +1,6 @@
 // Lists the WordPress versions to test: the latest release of every branch from `minimum` to `branch`
 // (see tests/wordpress.json). When a new branch comes out, change `branch` (and `minimum` to drop old ones).
-//   node tools/wp-versions.js          -> {"include":[{"wp":"7.0.8","php":"8.3","zip":"https://…"},…]} for a CI matrix
+//   node tools/wp-versions.js          -> {"include":[{"wp":"7.0.8","php":"8.4","zip":"https://…"},…]} for a CI matrix
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
